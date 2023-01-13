@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,6 +20,7 @@ public class DistanceCalculator {
 
     private File file;
 
+    // CSV FILE IS IN ICAO, LAT, LONG ORDER
     public DistanceCalculator(String inputAirport1ICAO, String inputAirport2ICAO) {
         airportICAOCodes = new ArrayList<String>();
         latitudeData = new ArrayList<Double>();
@@ -26,15 +29,14 @@ public class DistanceCalculator {
         airport2ICAO = inputAirport2ICAO;
         file = new File("AirportData.csv");
         try {
-            Scanner scanner = new Scanner(file);
-            String line = scanner.nextLine();
-            line = scanner.nextLine();
-            while (scanner.hasNextLine()) {
+            BufferedReader br = new BufferedReader(new FileReader("AirportData.csv"));
+            String line;
+            while ((line = br.readLine()) != null) {
                 airportICAOCodes.add(line.substring(0, 4));
                 latitudeData.add(Double.parseDouble(line.substring(5, line.lastIndexOf(","))));
                 longitudeData.add(Double.parseDouble(line.substring(line.lastIndexOf(",") + 1)));
             }
-            scanner.close();
+            br.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -49,21 +51,18 @@ public class DistanceCalculator {
                 airport2Index = i;
         }
 
-        airport1Lat = latitudeData.get(airport1Index);
-        airport1Long = longitudeData.get(airport1Index);
+        airport1Lat = Math.toRadians(latitudeData.get(airport1Index));
+        airport1Long = Math.toRadians(longitudeData.get(airport1Index));
 
-        airport2Lat = latitudeData.get(airport2Index);
-        airport2Long = longitudeData.get(airport2Index);
+        airport2Lat = Math.toRadians(latitudeData.get(airport2Index));
+        airport2Long = Math.toRadians(longitudeData.get(airport2Index));
 
     }
 
-    // IN UNITS OF KILOMETERS
+    // IN UNITS OF NAUTICAL MILES
     public double getDistance() {
-        double earthRadius = 6378.1;
-        double term1 = Math.pow(Math.sin((airport2Lat - airport1Lat) / 2), 2);
-        double term2 = Math.cos(airport1Lat) * Math.cos(airport2Lat)
-                * Math.pow(Math.sin((airport2Long - airport1Long) / 2), 2);
-        return 2 * earthRadius * Math.sqrt(term1 + term2);
+        return 3440.1 * Math.acos((Math.sin(airport1Lat) * Math.sin(airport2Lat))
+                + (Math.cos(airport1Lat) * Math.cos(airport2Lat) * Math.cos(airport1Long - airport2Long)));
     }
 
 }
