@@ -1,8 +1,8 @@
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class DistanceCalculator {
 
@@ -18,8 +18,6 @@ public class DistanceCalculator {
     private double airport2Lat;
     private double airport2Long;
 
-    private File file;
-
     // CSV FILE IS IN ICAO, LAT, LONG ORDER
     public DistanceCalculator(String inputAirport1ICAO, String inputAirport2ICAO) {
         airportICAOCodes = new ArrayList<String>();
@@ -27,9 +25,11 @@ public class DistanceCalculator {
         longitudeData = new ArrayList<Double>();
         airport1ICAO = inputAirport1ICAO;
         airport2ICAO = inputAirport2ICAO;
-        file = new File("AirportData.csv");
         try {
-            BufferedReader br = new BufferedReader(new FileReader("AirportData.csv"));
+            URL url = new URL("https://raw.githubusercontent.com/CaptMD-11/KaggleCSVFiles/main/AirportICAOLatLong.csv");
+            URLConnection urlConnection = url.openConnection();
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    urlConnection.getInputStream()));
             String line;
             while ((line = br.readLine()) != null) {
                 airportICAOCodes.add(line.substring(0, 4));
