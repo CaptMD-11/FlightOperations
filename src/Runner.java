@@ -1,8 +1,8 @@
 public class Runner {
     public static void main(String[] args) {
 
-        DistanceCalculator obj = new DistanceCalculator("OMDB", "EGLL");
+        DistanceCalculator obj = new DistanceCalculator("KLAX", "KSAN");
 
-        System.out.println(obj.getDistanceMi());
+        System.out.println(obj.getDistanceNM());
     }
 }
