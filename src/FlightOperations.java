@@ -4,7 +4,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-public class DistanceCalculator {
+public class FlightOperations {
 
     private ArrayList<String> airportICAOCodes;
     private ArrayList<Double> latitudeData;
@@ -19,7 +19,7 @@ public class DistanceCalculator {
     private double airport2Long;
 
     // CSV FILE IS IN ICAO, LAT, LONG ORDER
-    public DistanceCalculator(String inputAirport1ICAO, String inputAirport2ICAO) {
+    public FlightOperations(String inputAirport1ICAO, String inputAirport2ICAO) {
         airportICAOCodes = new ArrayList<String>();
         latitudeData = new ArrayList<Double>();
         longitudeData = new ArrayList<Double>();
