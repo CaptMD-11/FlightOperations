@@ -26,8 +26,9 @@ public class FlightOperations {
         airport1ICAO = inputAirport1ICAO;
         airport2ICAO = inputAirport2ICAO;
         try {
-            URL url = new URL("https://raw.githubusercontent.com/CaptMD-11/KaggleCSVFiles/main/AirportICAOLatLong.csv");
-            URLConnection urlConnection = url.openConnection();
+            URL airportICAOLatLongCSV = new URL(
+                    "https://raw.githubusercontent.com/CaptMD-11/KaggleCSVFiles/main/AirportICAOLatLong.csv");
+            URLConnection urlConnection = airportICAOLatLongCSV.openConnection();
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     urlConnection.getInputStream()));
             String line;
