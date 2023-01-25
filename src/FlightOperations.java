@@ -59,7 +59,6 @@ public class FlightOperations {
 
     }
 
-    // IN UNITS OF NAUTICAL MILES
     public double getDistanceNM() {
         return 3440.1 * Math.acos((Math.sin(airport1Lat) * Math.sin(airport2Lat))
                 + (Math.cos(airport1Lat) * Math.cos(airport2Lat) * Math.cos(airport1Long - airport2Long)));

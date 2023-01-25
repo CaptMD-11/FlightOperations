@@ -1,4 +1,4 @@
-This is AirportDistanceCalculator, a Java project made by Vignesh Nydhruva, that computes distance between airports, accounting for the Earth's curvature. 
+This is FlightOperations, a Java project made by Vignesh Nydhruva, that computes various data for flight planning, for simulation purposes only. 
     Copyright (C) 2022  Vignesh Nydhruva
 
     This program is free software: you can redistribute it and/or modify
