@@ -1,4 +1,4 @@
-This is FlightOperations, a Java project made by Vignesh Nydhruva, that computes various data for flight planning, for simulation purposes only. 
+This is FlightOperations, a project made by Vignesh Nydhruva, that computes various flight data, for simulation purposes only. 
     Copyright (C) 2022  Vignesh Nydhruva
 
     This program is free software: you can redistribute it and/or modify
