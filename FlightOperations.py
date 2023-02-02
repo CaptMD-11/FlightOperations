@@ -42,7 +42,3 @@ class FlightOperations:
 
     def get_distance_Mi(self):
         return self.get_distance_NM() * 1.15078
-
-
-obj = FlightOperations("KLAX", "OMDB")
-print(obj.get_distance_NM())
