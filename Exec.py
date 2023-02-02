@@ -1,11 +1,9 @@
 from FlightRadar24.api import FlightRadar24API
-from FlightOperations import FlightOperations
+from AirportDistances import AirportDistances
 
 fr_api = FlightRadar24API()
 
-# airlines = fr_api.get_airlines()
-# flights = fr_api.get_flights()
 
-airline_icao = "FDX"
+airline_icao = "UPS"
 thy_flights = fr_api.get_flights(airline=airline_icao)
 print(thy_flights)

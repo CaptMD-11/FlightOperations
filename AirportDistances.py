@@ -2,7 +2,7 @@ import requests
 import math
 
 
-class FlightOperations:
+class AirportDistances:
 
     def __init__(self, airport1_icao, airport2_icao):
 
