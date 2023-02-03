@@ -2,20 +2,19 @@ from FlightRadar24.api import FlightRadar24API
 from AirportDistances import AirportDistances
 
 fr_api = FlightRadar24API()
+airline_icao = "UPS"
+airline_flights = fr_api.get_flights(airline=airline_icao)
 
-str_addon = "test"
+print(airline_flights)
 
-for i in range(5):
-    file = open(str_addon + ".txt", "x")
-    file = open(str_addon + ".txt", "a")
-    file.write("hello")
-    file.close()
-    str_addon += "1"
+list = []
+file = open("test.txt", "r")
 
-# airline_icao = "UPS"
-# thy_flights = fr_api.get_flights(airline=airline_icao)
-# print(thy_flights)
+# file = open("file.txt", "x")
 
+# for i in range(len(airline_flights)):
+#     file = open("file.txt", "a")
+#     file.write(airline_flights[i] + "")
 
 # class FlightOperations:
 
